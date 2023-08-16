@@ -8,5 +8,5 @@ for linha in sys.stdin:
     palavras = linha.strip().split()
     for palavra in palavras:
         if palavra:
-	    palavra = palavra.lower()
+            palavra = palavra.lower()
             print(f"{palavra}\t1")
