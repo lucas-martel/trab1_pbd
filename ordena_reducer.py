@@ -2,21 +2,13 @@
 
 import sys
 
-valor_atual = None
-chave_atual = None
+output = []
 
-for linha in sys.stdin:
-    valor, chave = linha.strip().split('\t')
+for line in sys.stdin:
+    value, key = line.strip().split('\t')
+    output.append((value, key))
 
-    if valor_atual is None:
-        valor_atual= valor
-        chave_atual = chave
-    elif valor == valor_atual:
-        chave_atual = f"{chave_atual}, {chave}"
-    else:
-        print(f"{valor_atual}\t{chave_atual}")
-        valor_atual = valor
-        chave_atual = chave
+sorted_output = sorted(output, key=lambda x: len(x[1]), reverse=True)
 
-if valor_atual is not None:
-    print(f"{valor_atual}\t{chave_atual}")
+for value, key in sorted_output:
+    print(f"{value}\t{key}")
