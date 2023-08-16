@@ -2,9 +2,10 @@
 
 import sys
 
-for linha in sys.stdin:
-    partes = linha.strip().split(' ', 1)
-    chave = partes[0]
-    palavras = partes[1].split(',')
-    total_palavras = len(palavras)
-    print(f"{chave}\t{total_palavras}")
+for line in sys.stdin:
+    parts = line.strip().split('\t')
+    if len(parts) >= 2:
+        key = parts[0]
+        words = parts[1].split(',')
+        total_words = len(words)
+        print(f"{key}\t{total_words}")
