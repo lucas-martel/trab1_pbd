@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 
 import sys
+import re
 
 for linha in sys.stdin:
-    palavras = linha.split()  # Separa as palavras por espaços em branco
+    linha = re.sub(r'[^a-zA-Z0-9\s]', ' ', linha)
+    palavras = linha.strip().split()
     for palavra in palavras:
-        print(f"{palavra}\t1")
+        if palavra:
+            palavra = palavra.lower()
+            print(f"{palavra}\t1")
